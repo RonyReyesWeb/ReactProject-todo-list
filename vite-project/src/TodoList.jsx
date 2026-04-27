@@ -1,25 +1,12 @@
-export function TodoList( { todos }) {
+import { TodoItem } from "./TodoItem";
+
+export function TodoList( { todos, ToggleTodo, deleteTodo }) {
   return (
     <ul className="list">
       {todos.length === 0 && "no Todos"}
       {todos.map((todo) => {
         return (
-          <li key={todo.id}>
-            <label>
-              <input
-                type="checkbox"
-                checked={todo.completed}
-                // onChange={(e) => ToggleTodo(todo.id, e.target.checked)}
-              />
-              {todo.title}
-            </label>
-            <button
-            //   onClick={() => deleteTodo(todo.id)}
-              className="btn btn-danger"
-            >
-              Delete
-            </button>
-          </li>
+            <TodoItem {...todo} key={todo.id} ToggleTodo={ToggleTodo}  deleteTodo={deleteTodo} />
         );
       })}
     </ul>
