@@ -1,13 +1,13 @@
 import { useState } from "react";
 
-export function NewTodoform(props) {
+export function NewTodoform( {onSubmit } ) {
   const [newItem, setNewItem] = useState("");
 
   function handlerSubmit(e) {
     e.preventDefault();
     if (newItem === "") return;
 
-    props.onSubmit(newItem);
+    onSubmit(newItem);
 
     setNewItem("");
   }
